@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmailListController;
 use App\Livewire\Settings\Appearance;
 use App\Livewire\Settings\Password;
 use App\Livewire\Settings\Profile;
@@ -32,4 +33,7 @@ Route::middleware(['auth'])->group(function () {
             ),
         )
         ->name('two-factor.show');
+
+    Route::get('/lists', [EmailListController::class, 'index'])->name('email-list.index');
+    Route::get('/lists/create', [EmailListController::class, 'create'])->name('email-list.create');
 });
